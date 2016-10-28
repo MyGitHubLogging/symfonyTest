@@ -1,0 +1,4 @@
+services:
+#    cg_social.example:
+#        class: CG\SocialBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

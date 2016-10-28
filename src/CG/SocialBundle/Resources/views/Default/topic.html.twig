@@ -1,0 +1,27 @@
+<div class="well" id="topic-{{topic.id}}">
+    <div>
+        <blockquote class="">
+            <p> {{ topic.text }}</p>
+            <footer><cite title="Source Title">{{topic.user.username}}-{{ topic.datetimeCreate |date() }}</cite></footer>
+        </blockquote>
+        {% if app.user == topic.user and topic.responses |length == 0 %}
+            {{ render(url("cg_del_topic", {'idTopic': topic.id, 'fromRoute' : fromRoute})) }}
+        {% endif %}
+    </div>
+    {# if more responses than %nbResponsePerTopic% , others are hidden with collapse #}
+    {% if topic.responses |length > 0 %}
+        <div class="well">
+            {% set numResponse = 0 %}
+            {% for response in topic.responses %}
+                {% set numResponse = numResponse + 1  %}
+                {% include "CGSocialBundle:Default:response.html.twig "%}
+            {% endfor %}
+            {% if numResponse > setting.nbResponsePerTopic %}
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#topic-{{topic.id}} .responseHidden">
+                    {{ (topic.responses |length)-2}} other responses 
+                </button>
+            {% endif %}
+        </div>
+    {% endif %}
+    {{ render(url("cg_add_response", {'idTopic': topic.id, 'fromRoute' : fromRoute})) }}
+</div>

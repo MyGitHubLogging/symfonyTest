@@ -1,0 +1,33 @@
+cg_flux:
+    path: /flux/{page}
+    defaults: { _controller: CGSocialBundle:Default:flux , page:        1 }
+    requirements: {page: \d+ }
+    
+cg_history:
+    path:     /history/{page}
+    defaults: { _controller: CGSocialBundle:Default:history , page:        1 }
+    requirements: {page: \d+ }
+    
+cg_add_topic:
+    path:     /add_topic/{fromRoute}
+    defaults: { _controller: CGSocialBundle:Default:addTopic }
+    
+cg_add_response :
+    path:   /add_response/{idTopic}/{fromRoute}
+    defaults : { _controller: CGSocialBundle:Default:addResponse }
+
+cg_del_topic :    
+    path:   /del_topic/{idTopic}/{fromRoute}
+    defaults : { _controller: CGSocialBundle:Default:delTopic }
+
+cg_del_response :    
+    path:   /del_response/{idResponse}/{fromRoute}
+    defaults : { _controller: CGSocialBundle:Default:delResponse }
+    
+test:
+    path : /test
+    defaults:  { _controller: CGSocialBundle:Default:test }
+    
+cg_social_homepage:
+    path:     /
+    defaults: { _controller: CGSocialBundle:Default:index }

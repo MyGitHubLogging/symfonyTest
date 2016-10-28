@@ -1,0 +1,8 @@
+<blockquote class="well well-sm  
+            {% if numResponse > setting.nbResponsePerTopic %}
+                responseHidden collapse
+            {% endif %}    
+            ">
+    <p> {{ response.text }}</p>
+    <footer><cite title="Source Title">{{response.user.username}}-{{ response.datetimeCreate |date() }}</cite></footer>
+</blockquote>

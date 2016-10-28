@@ -1,0 +1,6 @@
+.in.collapse+button.btn:after {
+    content:' «';
+}
+.collapse+button.btn:after {
+    content:' »';
+}

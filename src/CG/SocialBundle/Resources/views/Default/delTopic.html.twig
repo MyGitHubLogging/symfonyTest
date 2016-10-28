@@ -1,0 +1,4 @@
+<form action="{{ path('cg_del_topic',{'idTopic': idTopic, 'fromRoute': fromRoute}) }}" method="post" {{ form_enctype(form) }}>
+    <input type="submit" value="Supprimer" class="btn btn-danger" onclick="return confirm('Are you sure?')" />
+    {{ form_rest(form) }}
+</form>

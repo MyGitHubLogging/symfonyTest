@@ -1,0 +1,17 @@
+{% extends "CGSocialBundle::layout.html.twig" %}
+
+
+{% block body %}
+    {{ render(url("cg_add_topic", {'fromRoute' : fromRoute})) }}
+    {% for topic in listTopic %}
+        {% include "CGSocialBundle:Default:topic.html.twig "%}
+    {% endfor %}
+    <ol class="pagination">
+        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+        {% for p in range(1, nbPages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path(fromRoute, {'page': p}) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

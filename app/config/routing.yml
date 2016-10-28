@@ -1,0 +1,24 @@
+login:
+    path: /login
+    defaults:
+        _controller: CGUserBundle:Security:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+    prefix:   /
+    
+cg_social:
+    prefix:   /social/
+    resource: "@CGSocialBundle/Resources/config/routing.yml"
+
+homepage:
+    path: /
+    defaults: { _controller: CGSocialBundle:Default:index }
+
+user:
+    prefix:   /
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
