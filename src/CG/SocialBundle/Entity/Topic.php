@@ -9,7 +9,8 @@ use CG\SocialBundle\Entity\Message;
  * @ORM\Entity(repositoryClass="CG\SocialBundle\Repository\TopicRepository")
  * @ORM\Table(name="cg_topic") 
  */
-class Topic extends Message {
+class Topic extends Message
+{
 
     /**
      * @ORM\Id 
@@ -30,7 +31,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
 
         return $this;
@@ -41,7 +43,8 @@ class Topic extends Message {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -52,7 +55,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setText($text) {
+    public function setText($text)
+    {
         $this->text = $text;
 
         return $this;
@@ -63,7 +67,8 @@ class Topic extends Message {
      *
      * @return string
      */
-    public function getText() {
+    public function getText()
+    {
         return $this->text;
     }
 
@@ -74,7 +79,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setDatetimeCreate($datetimeCreate) {
+    public function setDatetimeCreate($datetimeCreate)
+    {
         $this->datetimeCreate = $datetimeCreate;
 
         return $this;
@@ -85,7 +91,8 @@ class Topic extends Message {
      *
      * @return \DateTime
      */
-    public function getDatetimeCreate() {
+    public function getDatetimeCreate()
+    {
         return $this->datetimeCreate;
     }
 
@@ -96,7 +103,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setDatetimeEdit($datetimeEdit) {
+    public function setDatetimeEdit($datetimeEdit)
+    {
         $this->datetimeEdit = $datetimeEdit;
 
         return $this;
@@ -107,7 +115,8 @@ class Topic extends Message {
      *
      * @return \DateTime
      */
-    public function getDatetimeEdit() {
+    public function getDatetimeEdit()
+    {
         return $this->datetimeEdit;
     }
 
@@ -118,7 +127,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setDeleted($deleted) {
+    public function setDeleted($deleted)
+    {
         $this->deleted = $deleted;
 
         return $this;
@@ -129,7 +139,8 @@ class Topic extends Message {
      *
      * @return boolean
      */
-    public function getDeleted() {
+    public function getDeleted()
+    {
         return $this->deleted;
     }
 
@@ -140,7 +151,8 @@ class Topic extends Message {
      *
      * @return Topic
      */
-    public function setUser(\CG\UserBundle\Entity\User $user = null) {
+    public function setUser(\CG\UserBundle\Entity\User $user = null)
+    {
         $this->user = $user;
 
         return $this;
@@ -151,10 +163,10 @@ class Topic extends Message {
      *
      * @return \CG\UserBundle\Entity\User
      */
-    public function getUser() {
+    public function getUser()
+    {
         return $this->user;
     }
-
 
     /**
      * Add response
@@ -189,4 +201,5 @@ class Topic extends Message {
     {
         return $this->responses;
     }
+
 }

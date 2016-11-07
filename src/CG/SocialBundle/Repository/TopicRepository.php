@@ -6,9 +6,11 @@ use Doctrine\ORM\EntityRepository;
 //use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
-class TopicRepository extends EntityRepository {
+class TopicRepository extends EntityRepository
+{
 
-    public function getPaginatedTopics(int $page = 0, int $nbPerPage = 10) {
+    public function getPaginatedTopics(int $page = 0, int $nbPerPage = 10)
+    {
         $qb = $this->getTopics();
         $query = $qb
                 ->getQuery()
@@ -17,7 +19,8 @@ class TopicRepository extends EntityRepository {
         return new Paginator($query, true);
     }
 
-    public function getPaginatedUserTopics(\CG\UserBundle\Entity\User $user, int $page = 0, int $nbPerPage = 10) {
+    public function getPaginatedUserTopics(\CG\UserBundle\Entity\User $user, int $page = 0, int $nbPerPage = 10)
+    {
         $qb = $this->getTopics();
         $qb
                 ->where('t.user = :user')
@@ -28,7 +31,8 @@ class TopicRepository extends EntityRepository {
         return new Paginator($query, true);
     }
 
-    public function getTopics() {
+    public function getTopics()
+    {
         $qb = $this
                 ->createQueryBuilder('t')
                 ->where('t.deleted  = 0')

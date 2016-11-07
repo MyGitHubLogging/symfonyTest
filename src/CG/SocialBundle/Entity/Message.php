@@ -5,16 +5,17 @@ namespace CG\SocialBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * @ORM\MappedSuperclass
  */
-class Message {
-    
+class Message
+{
+
     /**
      * @ORM\ManyToOne(targetEntity="CG\UserBundle\Entity\User")
      */
     protected $user;
+
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank() 
@@ -39,9 +40,10 @@ class Message {
      */
     protected $deleted = 0;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->datetimeCreate = new \Datetime();
-        $this->datetimeEdit = new \Datetime();  
+        $this->datetimeEdit = new \Datetime();
     }
 
 }

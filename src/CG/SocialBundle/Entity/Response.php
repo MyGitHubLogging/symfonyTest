@@ -9,7 +9,8 @@ use CG\SocialBundle\Entity\Message;
  * @ORM\Entity(repositoryClass="CG\SocialBundle\Repository\Repository\ResponseRepository")
  * @ORM\Table(name="cg_response") 
  */
-class Response extends Message {
+class Response extends Message
+{
 
     /**
      * @ORM\Id 
@@ -31,7 +32,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
 
         return $this;
@@ -42,7 +44,8 @@ class Response extends Message {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -53,7 +56,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setText($text) {
+    public function setText($text)
+    {
         $this->text = $text;
 
         return $this;
@@ -64,7 +68,8 @@ class Response extends Message {
      *
      * @return string
      */
-    public function getText() {
+    public function getText()
+    {
         return $this->text;
     }
 
@@ -75,7 +80,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setDatetimeCreate($datetimeCreate) {
+    public function setDatetimeCreate($datetimeCreate)
+    {
         $this->datetimeCreate = $datetimeCreate;
 
         return $this;
@@ -86,7 +92,8 @@ class Response extends Message {
      *
      * @return \DateTime
      */
-    public function getDatetimeCreate() {
+    public function getDatetimeCreate()
+    {
         return $this->datetimeCreate;
     }
 
@@ -97,7 +104,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setDatetimeEdit($datetimeEdit) {
+    public function setDatetimeEdit($datetimeEdit)
+    {
         $this->datetimeEdit = $datetimeEdit;
 
         return $this;
@@ -108,7 +116,8 @@ class Response extends Message {
      *
      * @return \DateTime
      */
-    public function getDatetimeEdit() {
+    public function getDatetimeEdit()
+    {
         return $this->datetimeEdit;
     }
 
@@ -119,7 +128,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setDeleted($deleted) {
+    public function setDeleted($deleted)
+    {
         $this->deleted = $deleted;
 
         return $this;
@@ -130,7 +140,8 @@ class Response extends Message {
      *
      * @return boolean
      */
-    public function getDeleted() {
+    public function getDeleted()
+    {
         return $this->deleted;
     }
 
@@ -141,7 +152,8 @@ class Response extends Message {
      *
      * @return Response
      */
-    public function setUser(\CG\UserBundle\Entity\User $user = null) {
+    public function setUser(\CG\UserBundle\Entity\User $user = null)
+    {
         $this->user = $user;
 
         return $this;
@@ -152,10 +164,10 @@ class Response extends Message {
      *
      * @return \CG\UserBundle\Entity\User
      */
-    public function getUser() {
+    public function getUser()
+    {
         return $this->user;
     }
-
 
     /**
      * Set topic
@@ -180,4 +192,5 @@ class Response extends Message {
     {
         return $this->topic;
     }
+
 }

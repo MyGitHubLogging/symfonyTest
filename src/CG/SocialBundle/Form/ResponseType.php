@@ -14,12 +14,14 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
  *
  * @author fix1
  */
-class ResponseType extends AbstractType {
+class ResponseType extends AbstractType
+{
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
                 ->add('text', TextareaType::class, array(
                     'attr' => array(
@@ -35,7 +37,8 @@ class ResponseType extends AbstractType {
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver) {
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'CG\SocialBundle\Entity\Response'
         ));
@@ -44,7 +47,8 @@ class ResponseType extends AbstractType {
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix() {
+    public function getBlockPrefix()
+    {
         return 'cg_socialbundle_response';
     }
 

@@ -1,5 +1,7 @@
 <?php
-/*test*/
+
+/* test */
+
 namespace CG\SocialBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,18 +12,22 @@ use CG\SocialBundle\Entity\Topic;
 use CG\SocialBundle\Entity\Response;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
-class DefaultController extends Controller {
+class DefaultController extends Controller
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
 
         return $this->render('CGSocialBundle:Default:index.html.twig');
     }
 
-    public function testAction() {
+    public function testAction()
+    {
         echo 'a';
     }
 
-    public function fluxAction($page = 1) {
+    public function fluxAction($page = 1)
+    {
         $nbPerPage = $this->getParameter('nbPerPage');
 
         $repoTopic = $this
@@ -40,7 +46,8 @@ class DefaultController extends Controller {
         ));
     }
 
-    public function historyAction($page = 1) {
+    public function historyAction($page = 1)
+    {
         $nbPerPage = $this->getParameter('nbPerPage');
         $user = $this->getUser();
         $listTopic = $this
@@ -57,7 +64,8 @@ class DefaultController extends Controller {
         ));
     }
 
-    public function addTopicAction(Request $request, $fromRoute) {
+    public function addTopicAction(Request $request, $fromRoute)
+    {
         $topic = new Topic;
 
         $formBuilder = $this
@@ -85,7 +93,8 @@ class DefaultController extends Controller {
         ));
     }
 
-    public function delTopicAction(Request $request, $idTopic, $fromRoute) {
+    public function delTopicAction(Request $request, $idTopic, $fromRoute)
+    {
         $form = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -109,7 +118,8 @@ class DefaultController extends Controller {
         ));
     }
 
-    public function addResponseAction(Request $request, $idTopic, $fromRoute) {
+    public function addResponseAction(Request $request, $idTopic, $fromRoute)
+    {
         $response = new Response;
         $formBuilder = $this
                 ->get('form.factory')
