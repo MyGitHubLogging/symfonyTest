@@ -11,6 +11,7 @@ use CG\SocialBundle\Form\ResponseType;
 use CG\SocialBundle\Entity\Topic;
 use CG\SocialBundle\Entity\Response;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DefaultController extends Controller
 {
@@ -26,6 +27,11 @@ class DefaultController extends Controller
         echo 'a';
     }
 
+    /**
+     * 
+     * @param type $page
+     * @return type
+     */
     public function fluxAction($page = 1)
     {
         $nbPerPage = $this->getParameter('nbPerPage');
@@ -46,6 +52,12 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')") 
+     * 
+     * @param type $page
+     * @return type
+     */
     public function historyAction($page = 1)
     {
         $nbPerPage = $this->getParameter('nbPerPage');
@@ -64,6 +76,13 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')") 
+     * 
+     * @param Request $request
+     * @param type $fromRoute
+     * @return type
+     */
     public function addTopicAction(Request $request, $fromRoute)
     {
         $topic = new Topic;
@@ -93,6 +112,15 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')") 
+     * 
+     * @param Request $request
+     * @param type $idTopic
+     * @param type $fromRoute
+     * @return type
+     * @throws UnauthorizedHttpException
+     */
     public function delTopicAction(Request $request, $idTopic, $fromRoute)
     {
         $form = $this->get('form.factory')->create();
@@ -118,6 +146,14 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')") 
+     * 
+     * @param Request $request
+     * @param type $idTopic
+     * @param type $fromRoute
+     * @return type
+     */
     public function addResponseAction(Request $request, $idTopic, $fromRoute)
     {
         $response = new Response;

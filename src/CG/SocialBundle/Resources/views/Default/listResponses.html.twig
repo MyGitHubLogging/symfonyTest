@@ -4,9 +4,11 @@
 {% block body %}
     {{ render(url("cg_add_topic", {'fromRoute' : fromRoute})) }}
     {% for topic in listTopic %}
-        {% include "CGSocialBundle:Default:topic.html.twig "%}
+        <div class="col-lg-6 well">
+            {% include "CGSocialBundle:Default:topic.html.twig "%}
+        </div>
     {% endfor %}
-    <ol class="pagination">
+    <ol class="pagination col-sm-12">
         {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
         {% for p in range(1, nbPages) %}
             <li{% if p == page %} class="active"{% endif %}>

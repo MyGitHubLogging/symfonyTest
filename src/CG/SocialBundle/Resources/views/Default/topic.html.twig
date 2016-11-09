@@ -10,7 +10,7 @@
     </div>
     {# if more responses than %nbResponsePerTopic% , others are hidden with collapse #}
     {% if topic.responses |length > 0 %}
-        <div class="well">
+        <div class="">
             {% set numResponse = 0 %}
             {% for response in topic.responses %}
                 {% set numResponse = numResponse + 1  %}
@@ -18,7 +18,7 @@
             {% endfor %}
             {% if numResponse > setting.nbResponsePerTopic %}
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#topic-{{topic.id}} .responseHidden">
-                    {{ (topic.responses |length)-2}} other responses 
+                    {{ (topic.responses |length)- setting.nbResponsePerTopic}} other responses 
                 </button>
             {% endif %}
         </div>

@@ -23,7 +23,7 @@ class TopicRepository extends EntityRepository
     {
         $qb = $this->getTopics();
         $qb
-                ->where('t.user = :user')
+                ->andWhere('t.user = :user')
                 ->setParameter('user', $user);
         $query = $qb->getQuery()
                 ->setFirstResult(($page - 1) * $nbPerPage)
