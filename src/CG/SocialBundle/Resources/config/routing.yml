@@ -3,6 +3,11 @@ cg_flux:
     defaults: { _controller: CGSocialBundle:Default:flux , page:        1 }
     requirements: {page: \d+ }
     
+cg_flux_react_test:
+    path: /fluxReact/{page}
+    defaults: { _controller: CGSocialBundle:Default:fluxReact , page:        1 }
+    requirements: {page: \d+ }
+    
 cg_history:
     path:     /history/{page}
     defaults: { _controller: CGSocialBundle:Default:history , page:        1 }

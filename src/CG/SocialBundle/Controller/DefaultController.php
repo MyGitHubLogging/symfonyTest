@@ -51,6 +51,31 @@ class DefaultController extends Controller
                     'fromRoute' => 'cg_flux',
         ));
     }
+    
+    /**
+     * 
+     * @param type $page
+     * @return type
+     */
+    public function fluxReactAction($page = 1)
+    {
+        $nbPerPage = $this->getParameter('nbPerPage');
+
+        $repoTopic = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('CGSocialBundle:Topic');
+
+        $listTopic = $repoTopic->getPaginatedTopics($page, $nbPerPage);
+
+        $nbPages = ceil(count($listTopic) / $nbPerPage);
+        return $this->render('CGSocialBundle:Default:reactTest.html.twig', array(
+                    'listTopic' => $listTopic,
+                    'page' => $page,
+                    'nbPages' => $nbPages,
+                    'fromRoute' => 'cg_flux',
+        ));
+    }
 
     /**
      * @Security("has_role('ROLE_USER')") 

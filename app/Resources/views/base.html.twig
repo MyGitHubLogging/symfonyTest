@@ -22,10 +22,11 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{{ path('cg_flux') }}">Acceuil</a></li>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <li> <a href="{{ path('cg_history') }}">History</a></li>
-                            {% endif %}
-                        <li></li>
+                        <li><a href="{{ path('cg_flux_react_test') }}">test React</a></li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li><a href="{{ path('cg_history') }}">History</a></li>
+                        {% endif %}
+
                     </ul>
                     <div class=" navbar-right"> 
                         <ul class="nav navbar-nav navbar-right">

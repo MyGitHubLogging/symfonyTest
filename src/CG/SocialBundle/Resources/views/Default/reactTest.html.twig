@@ -1,0 +1,110 @@
+{% extends "CGSocialBundle::layoutReact.html.twig" %}
+
+
+{% block body %}
+    <script type="module">
+
+        const initialState = [{
+            id: 1,
+            text : 'text1 aaa bbb ccc',
+            user : {username : 'name1'},
+            datetimeCreate : '10/12/2016',
+            responses : [
+                {   id : 11,
+                    text : 'reponse 1',
+                    user : {username : 'name3'},
+                    datetimeCreate : '11/12/2016',
+                },
+                {   id : 21,
+                    text : 'reponse 1',
+                    user : {username : 'name3'},
+                    datetimeCreate : '11/12/2016',
+                },   
+            ],
+        }, {
+            id: 2,
+            text : 'text2 aaa bbb ccc',
+            user : {username : 'name2'},
+            datetimeCreate : '10/12/2016',
+            responses : [],
+        },{
+            id: 3,
+            text : 'text2 aaa bbb ccc',
+            user : {username : 'name2'},
+            datetimeCreate : '10/12/2016',
+            responses : [],
+        },]
+
+        const store = Redux.createStore(
+           Redux.combineReducers({
+                topics,
+           })
+        )
+        function topics(state = initialState, action) {
+          /*  if (action.type == 'ADD_TO_CART') {
+              state[action.index].quantity += 1  
+              return state
+            }*/
+            return state
+        } 
+        
+        function Topic(props){
+            return( 
+                    <div className="well col-lg-6"> 
+                        <div>
+                            <blockquote className="">
+                                <p> { props.topic.text }</p>
+                                <footer><cite title="Source Title">{props.topic.user.username}-{ props.topic.datetimeCreate }</cite></footer> 
+                            </blockquote>
+                        </div>
+                    
+                        { props.topic.responses.map((response) => (
+                            <div>
+                                <Response
+                                  response={response}
+                                  key={'response_'+response.id}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    
+             )
+        }
+        
+        function Response(props){
+            return (
+                    <blockquote className="well well-sm">
+                        <p> { props.response.text }</p>
+                        <footer><cite title="Source Title">{props.response.user.username}-{ props.response.datetimeCreate  }</cite></footer>
+                    </blockquote>
+                )
+        }
+
+
+        function App() {
+            return (
+                <div>
+                    { store.getState().topics.map((topic) => (
+                     <Topic
+                       topic={topic}
+                       key={'topic_'+topic.id}
+                     />
+                    ))}
+                </div>
+            )
+        }
+
+        function render() {
+            ReactDOM.render(<App />, document.querySelector('#react'))  
+        }
+
+        render()
+        store.subscribe(render)
+
+
+
+    </script>
+
+
+    <div id="react"></div>
+{% endblock %}
